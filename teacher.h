@@ -1,5 +1,5 @@
 #pragma once
-#include <map>
+#include <unordered_map>
 #include <string>
 #include <vector>
 
@@ -8,7 +8,7 @@
 class Teacher {
  private:
   std::vector<Letter> queue;
-  std::map<std::string, int> results;
+  std::unordered_map<std::string, int> results;
 
   bool Correct(const Solution& correct, const Solution& student);
 
@@ -18,5 +18,5 @@ class Teacher {
   void checkAll();
   void printResults();
   void saveResultsToCSV(const std::string& filename);
-  ~Teacher() {}
+  ~Teacher() = default;
 };

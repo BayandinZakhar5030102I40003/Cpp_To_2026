@@ -24,14 +24,14 @@ void Teacher::addSubmission(const Letter& sub) { queue.push_back(sub); }
 
 void Teacher::checkAll() {
   for (const auto& sub : queue) {
-    results[sub.studName] = 0;
+    results[sub.getStudentName()] = 0;
   }
 
   for (const auto& sub : queue) {
-    Solution correct = sub.func.solve();
+    Solution correct = sub.getEquation().solve();
 
-    if (Correct(correct, sub.answer)) {
-      results[sub.studName]++;
+    if (Correct(correct, sub.getAnswer())) {
+      results[sub.getStudentName()]++;
     }
   }
 }

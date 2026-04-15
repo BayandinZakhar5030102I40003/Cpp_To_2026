@@ -6,13 +6,18 @@
 #include "solution.h"
 
 class Letter {
- public:
-  std::string studName;
-  Equation func;
-  Solution answer;
+ private:
+  const std::string studName;
+  const Equation func;
+  const Solution answer;
 
-  Letter(std::string name, Equation fnc, Solution ans)
+ public:
+  Letter(const std::string& name, const Equation& fnc, const Solution& ans)
       : studName(name), func(fnc), answer(ans) {}
 
-  ~Letter() {}
+  const std::string& getStudentName() const { return studName; }
+  const Equation& getEquation() const { return func; }
+  const Solution& getAnswer() const { return answer; }
+
+  ~Letter() = default;
 };

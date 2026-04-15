@@ -4,6 +4,7 @@
 #include <fstream>
 #include <iostream>
 #include <map>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -20,7 +21,7 @@ int main() {
 
   std::ifstream file("equations.txt");
   if (!file.is_open()) {
-    std::cerr << "Erorr" << std::endl;
+    std::cerr << "Error" << std::endl;
     return 1;
   }
 
@@ -31,20 +32,20 @@ int main() {
   file.close();
 
   std::vector<Student*> students = {
-      new MiddleStudent("Sergey"),
-      new GoodStudent("Anton"),
-      new MiddleStudent("Petr"),
-      new BadStudent("Sasha"),
-      new MiddleStudent("Timur"),
-      new MiddleStudent("Timofei"),
-      new BadStudent("Zakhar"),
-      new MiddleStudent("Roman"),
-      new GoodStudent("Rafael Ambrosius Kusto"),
+      std::make_shared<MiddleStudent>("Sergey"),
+      std::make_shared<GoodStudent>("Anton"),
+      std::make_shared<MiddleStudent>("Petr"),
+      std::make_shared<BadStudent>("Sasha"),
+      std::make_shared<MiddleStudent>("Timur"),
+      std::make_shared<MiddleStudent>("Timofei"),
+      std::make_shared<BadStudent>("Zakhar"),
+      std::make_shared<MiddleStudent>("Roman"),
+      std::make_shared<GoodStudent>("Rafael Ambrosius Kusto"),
   };
 
   Teacher teacher;
 
-  for (auto student : students) {
+  for (const auto& student : students) {
     for (const auto& eq : equations) {
       Solution ans = student->solve(eq);
       teacher.addSubmission(Letter(student->getName(), eq, ans));

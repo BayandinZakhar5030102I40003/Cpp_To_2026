@@ -13,5 +13,5 @@ class Student {
 
   std::string getName() const { return name; }
 
-  virtual ~Student() {}
+  virtual ~Student() = default;
 };

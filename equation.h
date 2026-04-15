@@ -7,7 +7,7 @@ class Equation {
   double a, b, c;
 
   Equation(double a, double b, double c) : a(a), b(b), c(c) {}
-  ~Equation() {}
+  ~Equation() = default;
 
   Solution solve() const;  
 };
